@@ -10889,7 +10889,9 @@ textarea.form-control-lg {
 }
 
 .menu {
-  background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));
+  /*background: linear-gradient(to right, rgba(153, 38, 240, 0.95), rgba(209, 34, 227, 0.95));*/
+  background: linear-gradient(to right, rgba(153, 38, 240, 0.80), rgba(209, 34, 227, 0.80));
+  backdrop-filter: saturate(180%) blur(20px);
 }
 .menu li {
   padding: 0 0.7rem;
