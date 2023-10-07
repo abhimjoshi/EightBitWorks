@@ -13,7 +13,14 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    
+    [ActionName("home")]
     public IActionResult Index()
+    {
+        return View("index");
+    }
+    
+    public IActionResult Courses()
     {
         return View();
     }

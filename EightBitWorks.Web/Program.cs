@@ -23,8 +23,18 @@ app.UseRouting();
 
 //app.UseAuthorization();
 
+#region --- default routing ---
+/*
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+*/
+#endregion
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{action=home}",
+    defaults: new { controller = "home", action = "home" });
 
 app.Run();
