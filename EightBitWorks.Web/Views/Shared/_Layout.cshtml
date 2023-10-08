@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"] - EightBitWorks</title>
-    <link rel="stylesheet" href="/assets/css/style.css?1=3">
+    <link rel="stylesheet" href="/assets/css/style.css?1=@(Guid.NewGuid().ToString())">
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -18,7 +18,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////-->
 <nav class="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="/">
       <img src="/images/EightBitWorksLogo.png" alt="EightBitWorks Logo" height="32" width="32">&nbsp;&nbsp;&nbsp;EightBitWorks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -31,6 +31,15 @@ app.MapControllerRoute(
 */
 #endregion
 
+app.MapControllerRoute(
+    name: "docker-course",
+    pattern: "courses/master-in-docker-technologies/",
+    defaults: new { controller = "home", action = "DockerCourse" });
+
+app.MapControllerRoute(
+    name: "kubernetes-course",
+    pattern: "courses/from-zero-to-hero-kubernetes-technologies/",
+    defaults: new { controller = "home", action = "KubernetesCourse" });
 
 app.MapControllerRoute(
     name: "default",

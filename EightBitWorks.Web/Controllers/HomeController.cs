@@ -17,10 +17,20 @@ public class HomeController : Controller
     [ActionName("home")]
     public IActionResult Index()
     {
-        return View("index");
+        return View("Index");
     }
     
     public IActionResult Courses()
+    {
+        return View();
+    }
+    
+    public IActionResult DockerCourse()
+    {
+        return View("DockerCourse");
+    }
+
+    public IActionResult KubernetesCourse()
     {
         return View();
     }
