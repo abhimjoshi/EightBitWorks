@@ -27,7 +27,7 @@ public class HomeController : Controller
     
     public IActionResult DockerCourse()
     {
-        return View("DockerCourse");
+        return View();
     }
 
     public IActionResult KubernetesCourse()
