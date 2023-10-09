@@ -35,6 +35,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AboutAuthor()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

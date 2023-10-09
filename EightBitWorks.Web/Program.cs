@@ -33,13 +33,18 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "docker-course",
+    pattern: "about-the-author/",
+    defaults: new { controller = "Home", action = "AboutAuthor" });
+
+app.MapControllerRoute(
+    name: "docker-course",
     pattern: "courses/master-in-docker-technologies/",
-    defaults: new { controller = "home", action = "DockerCourse" });
+    defaults: new { controller = "Home", action = "DockerCourse" });
 
 app.MapControllerRoute(
     name: "kubernetes-course",
     pattern: "courses/from-zero-to-hero-kubernetes-technologies/",
-    defaults: new { controller = "home", action = "KubernetesCourse" });
+    defaults: new { controller = "Home", action = "KubernetesCourse" });
 
 app.MapControllerRoute(
     name: "default",
