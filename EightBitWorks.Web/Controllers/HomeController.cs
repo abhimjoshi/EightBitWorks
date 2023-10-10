@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using EightBitWorks.Web.Models;
 using EightBitWorks.Web.Services.Mail;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace EightBitWorks.Web.Controllers;
 
@@ -20,28 +21,33 @@ public class HomeController : Controller
         this.MailSettings = mailSettingsOptions.Value;
     }
 
-    
+
     [ActionName("Home")]
+    [OutputCache(Duration = 1800)]
     public IActionResult Index()
     {
         return View("Index");
     }
     
+    [OutputCache(Duration = 1800)]
     public IActionResult Courses()
     {
         return View();
     }
     
+    [OutputCache(Duration = 1800)]
     public IActionResult DockerCourse()
     {
         return View();
     }
 
+    [OutputCache(Duration = 1800)]
     public IActionResult KubernetesCourse()
     {
         return View();
     }
 
+    [OutputCache(Duration = 1800)]
     public IActionResult AboutAuthor()
     {
         return View();

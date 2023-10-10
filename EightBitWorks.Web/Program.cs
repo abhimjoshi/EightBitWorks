@@ -2,18 +2,17 @@ using EightBitWorks.Web.Services.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // add mail service
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IMailService, MailService>();
 
 // Add services to the container.
+builder.Services.AddOutputCache();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -31,27 +30,14 @@ app.Use(async (context, next) =>
         await next();
     }
 });
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseOutputCache();
 
-//app.UseAuthorization();
+#region --- Routing ---
 
-#region --- default routing ---
-/*
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-*/
-#endregion
-/*
-app.MapControllerRoute(
-    name: "status-code-redirect",
-    pattern: "home/redirect/404",
-    defaults: new { controller = "Home", action = "StatusCodeRedirect" });
-*/
 app.MapControllerRoute(
     name: "thank-you",
     pattern: "thank-you/",
@@ -76,5 +62,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{action=Home}",
     defaults: new { controller = "Home", action = "Home" });
+
+#endregion
 
 app.Run();

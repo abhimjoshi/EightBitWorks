@@ -8,17 +8,23 @@
     <link rel="icon" sizes="192x192" href="/images/EightBitWorks_favicon.png" type="image/x-icon"/>
     <link rel="shortcut icon" href="/images/EigthBitWorks_favicon.png" type="image/x-icon"/>
     <link rel="apple-touch-icon" href="/images/EightBitWorks_favicon.png" type="image/x-icon"/>
-    <link rel="stylesheet" href="/assets/css/style.css?1=@(Guid.NewGuid().ToString())">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6T39TTG2E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-W6T39TTG2E');
+    </script>
 </head>
 <body>
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////
-                               START SECTION 1 - THE NAVBAR SECTION  
-/////////////////////////////////////////////////////////////////////////////////////////////-->
 <nav class="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -29,22 +35,22 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       @await RenderSectionAsync("NaviationBar")
-        
-      <button type="button" class="rounded-pill btn-rounded">
-        +91 79 8448 1857
-        <span>
-          <i class="fas fa-phone-alt"></i>
-        </span>
-      </button>
+        <a href="tel:+917884481857" class="text-decoration-none">
+            <button class="rounded-pill btn-rounded">+91 79 8448 1857
+                <span><i class="fas fa-phone-alt"></i></span>
+            </button>
+        </a>
+      @* <button type="button" class="rounded-pill btn-rounded"> *@
+      @*   <span> *@
+      @*     <i class="fas fa-phone-alt"></i> *@
+      @*   </span> *@
+      @* </button> *@
     </div>
   </div>
 </nav>
 
 @RenderBody()
 
-<!-- ///////////////////////////////////////////////////////////////////////////////////////////
-                           START SECTION 9 - THE FOOTER  
-///////////////////////////////////////////////////////////////////////////////////////////////-->
 <footer class="footer">
   <div class="container">
     <div class="row">
@@ -59,7 +65,7 @@
           </svg>
         </div>
         <div class="contact-box__info">
-          <a href="#" class="contact-box__info--title">+91 79 8448 1857</a>
+          <a href="tel:+917984481857" class="contact-box__info--title">+91 79 8448 1857</a>
           <p class="contact-box__info--subtitle">  Mon-Fri 9am-6pm</p>
         </div>
       </div>  
@@ -75,7 +81,7 @@
           </svg>
         </div>
         <div class="contact-box__info">
-          <a href="#" class="contact-box__info--title">contact@eightbitworks.com</a>
+          <a href="mailto:contact@eightbitworks.com" class="contact-box__info--title">contact@eightbitworks.com</a>
           <p class="contact-box__info--subtitle">Online inquiry & support</p>
         </div>
       </div>
@@ -107,11 +113,11 @@
           connect with us on social media
         </div>
         <div class="col-lg-7 col-md-6">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/abhimjoshi/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/abhimjoshi/" target="_blank"><i class="fab fa-twitter"></i></a>
+          @* <a href="#"><i class="fab fa-facebook"></i></a> *@
+          @* <a href="#"><i class="fab fa-github"></i></a> *@
+          @* <a href="#"><i class="fab fa-instagram"></i></a> *@
         </div>
       </div>
     </div>
@@ -136,10 +142,8 @@
   <i class="fas fa-chevron-up"></i>
 </a>
 
-
-
-   
-    <script src="assets/vendors/js/glightbox.min.js"></script>
+    <!--
+    <script src="/assets/vendors/glightbox/js/glightbox.min.js"></script>
 
     <script type="text/javascript">
       const lightbox = GLightbox({
@@ -149,9 +153,9 @@
         'source': 'youtube', //vimeo, youtube or local
         'width': 900,
         'autoPlayVideos': 'true',
-});
+    });
     
-    </script>
-     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    </script> -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
