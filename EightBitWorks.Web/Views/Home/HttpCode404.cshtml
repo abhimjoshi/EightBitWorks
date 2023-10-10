@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Resource Not Found";
+}
+
+<style>
+    .no-text-decoration
+    {
+        text-decoration: none !important;
+    }
+</style>
+
+@section NaviationBar
+{
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/courses">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about-the-author">About Us</a></li>
+    </ul>
+}
+
+<section id="courses" class="courses-intro-section" style="padding-bottom: 4rem">
+    <div class="container">
+        <div class="row">
+            <h1 class="display-3--title--big fw-bold" style="text-transform: none">Oops! This is not valid page.</h1>
+            <div class="d-flex align-items-start">
+                <div class="heading-line text-left"></div>
+            </div>
+            <div class="col-lg-6 mt-3">
+                <h2>The requested resource is not available on the server.</h2>
+                <div class="mt-3 text-muted">
+                    <p class="text-muted">We would ask you to please visit the Home page.</p>
+                    <p class="text-muted">&nbsp;</p>
+                    <p class="text-muted">
+                        <a href="/" class="text-decoration-none">
+                            <button class="rounded-pill btn-rounded border-primary">Home
+                                <span><i class="fas fa-home"></i></span>
+                            </button>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-3 text-center">
+                <div class="services__pic">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,20 +1,27 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using EightBitWorks.Web.Models;
+using EightBitWorks.Web.Services.Mail;
 
 namespace EightBitWorks.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private MailSettings MailSettings { get; }
+    private ILogger<HomeController> Logger { get; }
+    private IMailService MailService { get; }
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IMailService mailService, 
+        IOptions<MailSettings> mailSettingsOptions)
     {
-        _logger = logger;
+        this.Logger = logger;
+        this.MailService = mailService;
+        this.MailSettings = mailSettingsOptions.Value;
     }
 
     
-    [ActionName("home")]
+    [ActionName("Home")]
     public IActionResult Index()
     {
         return View("Index");
@@ -39,7 +46,45 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    [HttpPost]
+    public IActionResult ContactUs(ContactFormModel model)
+    {
+        if (this.ModelState.IsValid)
+        {
+            MailService.SendMail(new MailData
+            {
+                EmailBody = EmailTemplate.GetContactFormEmailBody(model),
+                EmailSubject = $"New email from {model.Name}",
+                EmailToId = this.MailSettings.SenderEmail,
+                EmailToName = "EightBitWorks"
+            });
 
+            this.TempData["IsEmailSent"] = true;
+            return RedirectToRoute("thank-you");
+        }
+        else
+        {
+            return View("Index");    
+        }
+    }
+    public IActionResult ThankYou()
+    {
+        if (this.TempData["IsEmailSent"] != null && Convert.ToBoolean(this.TempData["IsEmailSent"]))
+        {
+            return View();
+        }
+        else
+        {
+            return RedirectToAction("Home");
+        }
+    }
+
+    public IActionResult HttpCode404()
+    {
+        return View();
+    }
+    
     public IActionResult Privacy()
     {
         return View();

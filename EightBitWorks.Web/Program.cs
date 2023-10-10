@@ -1,6 +1,11 @@
+using EightBitWorks.Web.Services.Mail;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// some comments here. Test Only.
+
+// add mail service
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddTransient<IMailService, MailService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -16,6 +21,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.Use(async (context, next) =>
+{
+    await next();
+    if (context.Response.StatusCode == 404)
+    {
+        // redirect user to 404 page in case resource is not available
+        context.Request.Path = "/HttpCode404";
+        await next();
+    }
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -30,6 +46,16 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 */
 #endregion
+/*
+app.MapControllerRoute(
+    name: "status-code-redirect",
+    pattern: "home/redirect/404",
+    defaults: new { controller = "Home", action = "StatusCodeRedirect" });
+*/
+app.MapControllerRoute(
+    name: "thank-you",
+    pattern: "thank-you/",
+    defaults: new { controller = "Home", action = "ThankYou" });
 
 app.MapControllerRoute(
     name: "docker-course",
@@ -48,7 +74,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{action=home}",
-    defaults: new { controller = "home", action = "home" });
+    pattern: "{action=Home}",
+    defaults: new { controller = "Home", action = "Home" });
 
 app.Run();
