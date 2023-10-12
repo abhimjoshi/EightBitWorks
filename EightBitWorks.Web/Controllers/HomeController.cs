@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.OutputCaching;
 
 namespace EightBitWorks.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController : BaseController
 {
     private MailSettings MailSettings { get; }
     private ILogger<HomeController> Logger { get; }
@@ -32,6 +32,7 @@ public class HomeController : Controller
     [OutputCache(Duration = 1800)]
     public IActionResult Courses()
     {
+        string path = this.HttpContext.Request.Path;
         return View();
     }
     

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EightBitWorks.Web", "EightBitWorks.Web\EightBitWorks.Web.csproj", "{62101834-0479-49D4-9907-571EA1E1CD4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EightBitWorks.InvalidateCacheFunc", "EightBitWorks.InvalidateCacheFunc\EightBitWorks.InvalidateCacheFunc.csproj", "{6D8FF1CE-4D10-4D31-BA6D-870E80460B15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{62101834-0479-49D4-9907-571EA1E1CD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62101834-0479-49D4-9907-571EA1E1CD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62101834-0479-49D4-9907-571EA1E1CD4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D8FF1CE-4D10-4D31-BA6D-870E80460B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D8FF1CE-4D10-4D31-BA6D-870E80460B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D8FF1CE-4D10-4D31-BA6D-870E80460B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D8FF1CE-4D10-4D31-BA6D-870E80460B15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
