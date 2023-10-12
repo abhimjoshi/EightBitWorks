@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using EightBitWorks.Web.Models;
@@ -94,6 +95,22 @@ public class HomeController : BaseController
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    /// <summary>
+    /// This endpoint is used to just keep the container awake.
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("invalidate/cache")]
+    public IActionResult CacheInvalidationOnly()
+    {
+        var invalidate = new
+        {
+            cacheInvalidated = true,
+            dateTime = $"{DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture)} UTC"
+        };
+
+        return Json(invalidate);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
