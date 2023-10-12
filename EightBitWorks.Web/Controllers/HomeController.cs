@@ -32,7 +32,6 @@ public class HomeController : BaseController
     [OutputCache(Duration = 1800)]
     public IActionResult Courses()
     {
-        string path = this.HttpContext.Request.Path;
         return View();
     }
     

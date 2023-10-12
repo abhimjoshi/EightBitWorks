@@ -1,4 +1,5 @@
 using EightBitWorks.Web.Services.Mail;
+using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,25 @@ builder.Services.AddTransient<IMailService, MailService>();
 // Add services to the container.
 builder.Services.AddOutputCache();
 builder.Services.AddControllersWithViews();
+builder.Services.AddResponseCompression( options => {
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { "text/javascript", "text/css"}
+    );
+});
+
+// minify css and js files
+builder.Services.AddWebOptimizer(pipeline =>
+    {
+        pipeline.MinifyCssFiles("/assets/css/style.css", "/assets/css/fontawesome.css");
+    },
+    option =>
+    {
+        option.EnableCaching = true;
+        option.EnableDiskCache = false;
+        option.EnableMemoryCache = true;
+        option.AllowEmptyBundle = true;
+    }
+);
 
 var app = builder.Build();
 
@@ -31,6 +51,8 @@ app.Use(async (context, next) =>
     }
 });
 app.UseHttpsRedirection();
+app.UseResponseCompression();
+app.UseWebOptimizer();
 app.UseStaticFiles();
 
 app.UseRouting();
