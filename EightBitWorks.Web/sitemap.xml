@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://eightbitworks.com/</loc>
+        <lastmod>2023-10-13T08:48:19+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://eightbitworks.com/courses/</loc>
+        <lastmod>2023-10-13T08:48:19+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://eightbitworks.com/about-the-author/</loc>
+        <lastmod>2023-10-13T08:48:19+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://eightbitworks.com/courses/master-in-docker-technologies/</loc>
+        <lastmod>2023-10-13T08:48:19+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://eightbitworks.com/courses/from-zero-to-hero-kubernetes-technologies/</loc>
+        <lastmod>2023-10-13T08:48:19+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://eightbitworks.com/download/Docker-Kubernetes-Course-Outline.pdf</loc>
+        <lastmod>2023-10-09T09:04:43+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+</urlset>
