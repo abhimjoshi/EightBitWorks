@@ -40,6 +40,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+app.UseHttpsRedirection();
+app.UseResponseCompression();
+app.UseWebOptimizer();
+app.UseStaticFiles();
 app.Use(async (context, next) =>
 {
     await next();
@@ -50,11 +55,6 @@ app.Use(async (context, next) =>
         await next();
     }
 });
-app.UseHttpsRedirection();
-app.UseResponseCompression();
-app.UseWebOptimizer();
-app.UseStaticFiles();
-
 app.UseRouting();
 app.UseOutputCache();
 

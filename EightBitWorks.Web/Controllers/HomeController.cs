@@ -92,6 +92,21 @@ public class HomeController : BaseController
         return View();
     }
     
+    //[OutputCache(Duration = 1800)]
+    [Route("sitemap.xml")]
+    public IActionResult GetSitemap()
+    {
+        var fileBytes = System.IO.File.ReadAllBytes("sitemap.xml");
+        return File(fileBytes, "text/xml");
+    }
+    
+    [Route("robots.txt")]
+    public IActionResult GetRobotsTxt()
+    {
+        var fileBytes = System.IO.File.ReadAllBytes("robots.txt");
+        return File(fileBytes, "text/plain");
+    }
+    
     public IActionResult Privacy()
     {
         return View();
@@ -109,7 +124,7 @@ public class HomeController : BaseController
             cacheInvalidated = true,
             dateTime = $"{DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture)} UTC"
         };
-
+        
         return Json(invalidate);
     }
 
@@ -118,4 +133,6 @@ public class HomeController : BaseController
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    
+    
 }
