@@ -29,44 +29,7 @@
     
       gtag('config', 'G-W6T39TTG2E');
     </script>
-    <script type="application/ld+json">
-    {
-      "@@context": "https://schema.org",
-      "@@type": "ItemList",
-      "itemListElement": [
-        {
-          "@@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@@type": "Course",
-            "url": "https://eightbitworks.com/courses/master-in-docker-technologies/",
-            "name": "Master In Docker Technologies",
-            "description": "This is an expert level Docker training course that helps you to build container-based applications. This course on Docker technologies can help you develop software across platforms. Master the configuration, deployment, and maintenance of the Docker system in our Docker training course.",
-            "provider": {
-              "@@type": "Organization",
-              "name": "EightBitWorks",
-              "sameAs": "https://eightbitworks.com"
-            }
-          }
-        },
-        {
-          "@@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@@type": "Course",
-            "url": "https://eightbitworks.com/courses/from-zero-to-hero-kubernetes-technologies/",
-            "name": "Docker And Kubernetes: From Zero To Hero",
-            "description": "Become an expert in implementing and maintaining Kubernetes platform applications with this Docker and Kubernetes training course. Gain an in-depth understanding of container orchestration platform Kubernetes and master in application deployment, maintainability, scalability, and security.",
-            "provider": {
-              "@@type": "Organization",
-              "name": "EightBitWorks",
-              "sameAs": "https://eightbitworks.com"
-            }
-          }
-        }
-      ]
-    }
-    </script>
+    @await RenderSectionAsync("JsonLd", false)
 </head>
 <body>
 

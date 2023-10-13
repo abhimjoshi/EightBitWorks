@@ -2,17 +2,6 @@
     ViewData["Title"] = "Master In Docker Technologies";
 }
 
-
-@section NaviationBar
-{
-    <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/courses/">Courses</a></li>
-        <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
-    </ul>
-}
-
 <section id="courses" class="courses-intro-section">
     <div class="container">
         <div class="row text-left">
@@ -197,3 +186,30 @@
         </div>
     </div>
 </section>
+
+@section NaviationBar
+{
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/courses/">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
+    </ul>
+}
+
+@section JsonLd
+{
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Course",
+      "name": "Master In Docker Technologies",
+      "description": "This is an expert level Docker training course that helps you to build container-based applications. This course on Docker technologies can help you develop software across platforms. Master the configuration, deployment, and maintenance of the Docker system in our Docker training course.",
+      "provider": {
+        "@@type": "Organization",
+        "name": "EightBitWorks",
+        "sameAs": "https://eightbitworks"
+      }
+    }
+  </script>
+}
