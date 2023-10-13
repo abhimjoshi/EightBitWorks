@@ -11,8 +11,7 @@ public class BaseController : Controller
     {
         var httpRequest = context.HttpContext.Request;
         var isSecure = context.HttpContext.Request.IsHttps;
-        var requestScheme = isSecure ? SchemeHttps : SchemeHttp;
-        this.ViewData["PageUrl"] = $"{requestScheme}://{httpRequest.Host.Value}{httpRequest.Path.ToString()}";
+        this.ViewData["PageUrl"] = $"{SchemeHttps}://{httpRequest.Host.Value}{httpRequest.Path.ToString()}";
         
         base.OnActionExecuting(context);
     }
