@@ -1,5 +1,6 @@
 using EightBitWorks.Web.Services.Mail;
 using Microsoft.AspNetCore.ResponseCompression;
+using WebMarkupMin.AspNetCore7;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,18 @@ builder.Services.AddTransient<IMailService, MailService>();
 
 // Add services to the container.
 builder.Services.AddOutputCache();
+
+// minify html
+// ref: https://github.com/Taritsyn/WebMarkupMin/wiki/ASP.NET-Core-6
+// the reference is for .NET 6, but it is exactly same for .NET 7 too.
+builder.Services.AddWebMarkupMin(o =>
+    {
+        o.AllowCompressionInDevelopmentEnvironment = true;
+        o.AllowMinificationInDevelopmentEnvironment = true;
+    })
+    .AddHtmlMinification()
+    .AddHttpCompression();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddResponseCompression( options => {
     options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
@@ -40,11 +53,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 app.UseResponseCompression();
 app.UseWebOptimizer();
 app.UseStaticFiles();
+
 app.Use(async (context, next) =>
 {
     await next();
@@ -55,6 +68,7 @@ app.Use(async (context, next) =>
         await next();
     }
 });
+app.UseWebMarkupMin();
 app.UseRouting();
 app.UseOutputCache();
 
