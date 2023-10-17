@@ -1,7 +1,8 @@
+@using EightBitWorks.Web.Configuration
 @{
     ViewData["Title"] = "Thank you";
 }
-
+@inject IHostConfiguration HostConfiguration
 <style>
     .no-text-decoration
     {
@@ -32,7 +33,7 @@
             </div>
             <div class="col-lg-6 mt-3 text-center">
                 <div class="services__pic">
-                    <img src="/images/ThankYou.png" alt="marketing illustration" class="img-fluid">
+                    <img src="@HostConfiguration.GetResourceUrl("/images/ThankYou.png")" alt="marketing illustration" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -45,6 +46,6 @@
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/courses/">Courses</a></li>
         <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact-us/">Contact Us</a></li>
     </ul>
 }

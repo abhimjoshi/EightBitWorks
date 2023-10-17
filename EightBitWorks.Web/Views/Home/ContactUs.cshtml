@@ -1,0 +1,98 @@
+@using EightBitWorks.Web.Configuration
+@{
+    ViewData["Title"] = "Contact Us";
+}
+@inject IHostConfiguration HostConfiguration
+
+<style>
+    .no-text-decoration
+    {
+        text-decoration: none !important;
+    }
+</style>
+
+<section id="contact" class="courses-intro-section" style="padding-bottom: 4rem">
+  <div class="container">
+    <div class="row">
+      <h1 class="display-3--title--big fw-bold">Contact Us</h1>
+      <div class="d-flex align-items-start">
+          <div class="heading-line text-left"></div>
+      </div>
+      <p class="lh-lg">
+        Reach out to us now and let's get started on designing a customized training program tailored to your team's needs.
+      </p>
+    </div>
+
+    <!-- START THE CTA CONTENT  -->
+    <div class="row text-white">
+      <div class="col-12 col-lg-6 gradient shadow p-3">
+        <div class="cta-info w-100">
+          <h4 class="display-4 fw-bold">100% Satisfaction Guaranteed</h4>
+          <p class="lh-lg">
+            Your satisfaction is our top priority. We are confident in the quality of our training programs and the expertise we offer. That's why we offer a 100% Satisfaction Guarantee. 
+          </p>
+          <p>
+            Join us with the assurance that your learning journey is backed by our unwavering commitment to your satisfaction.
+          </p>
+          <h3 class="display-3--brief">What will be the next step?</h3>
+          <ul class="cta-info__list">
+            <li>Ensure a timely response within a day.</li>
+            <li>Ask for specific details about your Docker and Kubernetes training needs.</li>
+            <li>Get course structure, schedules and pricing based on your objectives and requirements.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 bg-white shadow p-3">
+        <div class="form w-100 pb-2">
+          <h4 class="display-3--title mb-5">start your learning</h4>
+          <form action="/contactus" class="row" enctype="multipart/form-data" method="post">
+            <div class="col-lg-6 col-md mb-3">
+              <input name="name" type="text" placeholder="First Name" required="required" maxlength="60" id="inputFirstName" class="shadow form-control form-control-lg">
+            </div>
+            <div class="col-lg-6 col-md mb-3">
+              <input name="company" type="text" placeholder="Company Name"  maxlength="100" id="inputLastName" class="shadow form-control form-control-lg">
+            </div>
+            <div class="col-lg-12 mb-3">
+              <input name="fromEmail" type="email" placeholder="email address" required="required" maxlength="60"  id="inputEmail" class="shadow form-control form-control-lg">
+            </div>
+            <div class="col-lg-12 mb-3">
+              <textarea name="message" placeholder="message" id="message" required="required" rows="8" maxlength="3000" class="shadow form-control form-control-lg"></textarea>
+            </div>
+            <div class="text-center d-grid mt-1">
+              <button type="submit" class="btn btn-primary rounded-pill pt-3 pb-3">
+                submit
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@section NaviationBar
+{
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="/courses/">Courses</a></li>
+    <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
+    <li class="nav-item"><a class="nav-link active" href="/contact-us/">Contact Us</a></li>
+  </ul>
+}
+
+@section JsonLd
+{
+  <script type="application/ld+json">
+    {
+        "@@context": "http://schema.org",
+        "@@type": "WebPage",
+        "name": "About Abhishek Joshi",
+        "description": "Abhishek has an impressive and diverse range of experiences in the software development field, from software engineer to VP of engineering roles. His expertise in Docker and Kubernetes is particularly valuable in today's rapidly evolving tech landscape. His expertise lies in Docker and Kubernetes, making him a sought-after authority in the field.",
+        "publisher": {
+            "@@type": "ProfilePage",
+            "name": "https://eightbitworks.com/about-the-author/"
+        }
+    }
+    </script>
+}

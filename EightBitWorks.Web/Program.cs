@@ -1,12 +1,27 @@
+using EightBitWorks.Web.Configuration;
 using EightBitWorks.Web.Services.Mail;
 using Microsoft.AspNetCore.ResponseCompression;
 using WebMarkupMin.AspNetCore7;
 
 var builder = WebApplication.CreateBuilder(args);
+WebApplication app = null;
 
 // add mail service
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IMailService, MailService>();
+builder.Services.AddSingleton<IHostConfiguration>(x =>
+{
+    var cdnSection = builder.Configuration.GetSection("CdnSettings");
+    var cdnUrl = cdnSection["CdnUrl"];
+    var useCdn = Convert.ToBoolean(cdnSection["UseCdn"]);
+
+    var hostConfiguration = new HostConfiguration
+    {
+        CdnHostUrl = useCdn ? (app.Environment.IsDevelopment() ? string.Empty : cdnUrl) : string.Empty
+    };
+
+    return hostConfiguration;
+});
 
 // Add services to the container.
 builder.Services.AddOutputCache();
@@ -43,7 +58,7 @@ builder.Services.AddWebOptimizer(pipeline =>
     }
 );
 
-var app = builder.Build();
+app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -73,6 +88,11 @@ app.UseRouting();
 app.UseOutputCache();
 
 #region --- Routing ---
+
+app.MapControllerRoute(
+    name: "contact-us",
+    pattern: "contact-us/",
+    defaults: new { controller = "Home", action = "ContactUs" });
 
 app.MapControllerRoute(
     name: "thank-you",

@@ -1,3 +1,5 @@
+@using EightBitWorks.Web.Configuration
+@inject IHostConfiguration HostConfiguration
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +38,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <img src="/images/EightBitWorksLogo.png" alt="EightBitWorks Logo" height="32" width="32">&nbsp;&nbsp;&nbsp;EightBitWorks
+      <img src="@HostConfiguration.GetResourceUrl("/images/EightBitWorksLogo.png")" alt="EightBitWorks Logo" height="32" width="32">&nbsp;&nbsp;&nbsp;EightBitWorks
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -48,11 +50,6 @@
                 <span><i class="fas fa-phone-alt"></i></span>
             </button>
         </a>
-      @* <button type="button" class="rounded-pill btn-rounded"> *@
-      @*   <span> *@
-      @*     <i class="fas fa-phone-alt"></i> *@
-      @*   </span> *@
-      @* </button> *@
     </div>
   </div>
 </nav>

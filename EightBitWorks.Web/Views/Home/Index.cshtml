@@ -1,6 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Expert training on Docker & Kubernetes";
+﻿@using EightBitWorks.Web.Configuration
+@{
+    ViewData["Title"] = "Expert training on Docker & Kubernetes"; 
 }
+@inject IHostConfiguration HostConfiguration
 
 <section id="home" class="intro-section">
   <div class="container">
@@ -22,7 +24,7 @@
       <!-- START THE CONTENT FOR THE VIDEO -->
       <div class="col-md-6 intros text-end">
         <div class="video-box">
-          <img src="/images/arts/intro-section-illustration.png" alt="video illutration" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/arts/intro-section-illustration.png")" alt="video illutration" class="img-fluid">
           <!-- <a href="#" class="glightbox position-absolute top-50 start-50 translate-middle">
             <span>
               <i class="fas fa-play-circle"></i>
@@ -49,27 +51,27 @@
     <div class="row">
       <div class="col-md-4 col-lg-2">
         <div class="campanies__logo-box shadow-sm">
-          <img src="/images/campanies/logo_fidelity.png" alt="Fidelity logo" title="Fidelity logo" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/companies/logo_fidelity.png")" alt="Fidelity logo" title="Fidelity logo" class="img-fluid">
         </div>
       </div>
       <div class="col-md-4 col-lg-2">
         <div class="campanies__logo-box shadow-sm">
-          <img src="/images/campanies/logo_intuit.png" alt="Intuit logo" title="Intuit" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/companies/logo_intuit.png")" alt="Intuit logo" title="Intuit" class="img-fluid">
         </div>
       </div>
       <div class="col-md-4 col-lg-2">
         <div class="campanies__logo-box shadow-sm">
-          <img src="/images/campanies/logo_auk.png" alt="AUK logo" title="American University of Kuwait" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/companies/logo_auk.png")" alt="AUK logo" title="American University of Kuwait" class="img-fluid">
         </div>
       </div>
       <div class="col-md-4 col-lg-2">
         <div class="campanies__logo-box shadow-sm">
-          <img src="/images/campanies/logo_gulfbank.png" alt="Gulf Bank logo" title="Gulf Bank" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/companies/logo_gulfbank.png")" alt="Gulf Bank logo" title="Gulf Bank" class="img-fluid">
         </div>
       </div>
       <div class="col-md-4 col-lg-4">
         <div class="campanies__logo-box shadow-sm">
-          <img src="/images/campanies/logo_a1ig.png?1=1" alt="A1IG logo" title="A1IG" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/companies/logo_a1ig.png")" alt="A1IG logo" title="A1IG" class="img-fluid">
         </div>
       </div>
     </div>
@@ -121,7 +123,7 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4 text-end">
         <div class="services__pic">
-          <img src="/images/services/service-1.png" alt="marketing illustration" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/services/service-1.png")" alt="marketing illustration" class="img-fluid">
         </div>
       </div>
     </div>
@@ -129,7 +131,7 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4 text-start">
         <div class="services__pic">
-          <img src="/images/services/service-2.png" alt="web development illustration" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/services/service-2.png")" alt="web development illustration" class="img-fluid">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4">
@@ -168,7 +170,7 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 services mt-4 text-end">
         <div class="services__pic">
-          <img src="/images/services/service-3.png" alt="cloud hosting illustration" class="img-fluid">
+          <img src="@HostConfiguration.GetResourceUrl("/images/services/service-3.png")" alt="cloud hosting illustration" class="img-fluid">
         </div>
       </div>
     </div>
@@ -238,7 +240,7 @@
       <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="/courses/">Courses</a></li>
       <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
-      <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="/contact-us/">Contact Us</a></li>
     </ul>
 }
 

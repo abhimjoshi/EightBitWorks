@@ -14,7 +14,7 @@ public class HomeController : BaseController
     private ILogger<HomeController> Logger { get; }
     private IMailService MailService { get; }
 
-    public HomeController(ILogger<HomeController> logger, IMailService mailService, 
+    public HomeController(ILogger<HomeController> logger, IMailService mailService,
         IOptions<MailSettings> mailSettingsOptions)
     {
         this.Logger = logger;
@@ -29,13 +29,13 @@ public class HomeController : BaseController
     {
         return View("Index");
     }
-    
+
     [OutputCache(Duration = 1800)]
     public IActionResult Courses()
     {
         return View();
     }
-    
+
     [OutputCache(Duration = 1800)]
     public IActionResult DockerCourse()
     {
@@ -53,7 +53,7 @@ public class HomeController : BaseController
     {
         return View();
     }
-    
+
     [HttpPost]
     public IActionResult ContactUs(ContactFormModel model)
     {
@@ -72,9 +72,10 @@ public class HomeController : BaseController
         }
         else
         {
-            return View("Index");    
+            return View("Index");
         }
     }
+
     public IActionResult ThankYou()
     {
         if (this.TempData["IsEmailSent"] != null && Convert.ToBoolean(this.TempData["IsEmailSent"]))
@@ -87,11 +88,16 @@ public class HomeController : BaseController
         }
     }
 
+    public IActionResult ContactUs()
+    {
+        return View();
+    }
+
     public IActionResult HttpCode404()
     {
         return View();
     }
-    
+
     //[OutputCache(Duration = 1800)]
     [Route("sitemap.xml")]
     public IActionResult GetSitemap()
@@ -99,14 +105,14 @@ public class HomeController : BaseController
         var fileBytes = System.IO.File.ReadAllBytes("sitemap.xml");
         return File(fileBytes, "text/xml");
     }
-    
+
     [Route("robots.txt")]
     public IActionResult GetRobotsTxt()
     {
         var fileBytes = System.IO.File.ReadAllBytes("robots.txt");
         return File(fileBytes, "text/plain");
     }
-    
+
     public IActionResult Privacy()
     {
         return View();
@@ -124,7 +130,7 @@ public class HomeController : BaseController
             cacheInvalidated = true,
             dateTime = $"{DateTime.Now.ToUniversalTime().ToString(CultureInfo.InvariantCulture)} UTC"
         };
-        
+
         return Json(invalidate);
     }
 
@@ -133,6 +139,4 @@ public class HomeController : BaseController
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    
-    
 }

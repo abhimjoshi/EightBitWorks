@@ -1,6 +1,8 @@
+@using EightBitWorks.Web.Configuration
 @{
     ViewData["Title"] = "Docker And Kubernetes: From Zero To Hero";
 }
+@inject IHostConfiguration HostConfiguration
 
 <section id="courses" class="courses-intro-section">
     <div class="container">
@@ -14,7 +16,11 @@
             <p class="text-muted">Become an expert in implementing and maintaining Kubernetes platform applications with this Docker and Kubernetes Training. Gain an in-depth understanding of user interface and navigation, users and tasks, and data administration.</p>
             <p class="text-muted">Further, you will understand Kubernetes architecture and its master components, like node, pods, labels, and Annotations. You will also learn to deploy apps on clusters and further expose these apps outside the cluster i.e. deploy Kubernetes Cluster on Cloud server etc. and get to know, how to scale apps either manually or using auto-scaling, along with best security practices that should be followed during cluster orchestration like Providing a Unique Identity for an Application.</p>
             <p class="text-muted">Get ready for Docker and Kubernetes deployment at your organization with our Docker and Kubernetes training.</p>
-            <p class="my-0">&nbsp;</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 services">
+                <img src="@HostConfiguration.GetResourceUrl("/images/kubernetes-icon.png")" alt="Docker Technologies Course" class="img-fluid" width="100" height="100">
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-3 services">
@@ -185,7 +191,7 @@
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link active" href="/courses/">Courses</a></li>
         <li class="nav-item"><a class="nav-link" href="/about-the-author/">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact-us/">Contact Us</a></li>
     </ul>
 }
 

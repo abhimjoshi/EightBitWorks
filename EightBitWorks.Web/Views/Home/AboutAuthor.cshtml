@@ -1,6 +1,8 @@
+@using EightBitWorks.Web.Configuration
 @{
     ViewData["Title"] = "About The Author: Abhishek Joshi";
 }
+@inject IHostConfiguration HostConfiguration
 
 <style>
     .no-text-decoration
@@ -26,25 +28,26 @@
             </div>
             <div class="col-lg-6 mt-3 text-center">
                 <div class="services__pic">
-                    <img src="/images/AbhishekJoshi.png?1=1" alt="marketing illustration" class="img-fluid">
+                    <img src="@HostConfiguration.GetResourceUrl("/images/AbhishekJoshi.png")" alt="marketing illustration" class="img-fluid">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 mt-1">
                 <h3>Some of his core technical competence</h3>
-                <div class="mt-3 text-muted">
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">15+ Years in Product Development</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Docker &amp; Kubernetes</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Microsoft Azure & AWS Cloud Platform</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Microservices and Design Patterns</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Distributed and Serverless Architecture</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Apache Kafka and IoT</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Multi-threading and Socket Programming</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">.NET Core, C#, and Python</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Web Socket and Windows Services</span></p>
-                    <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Agile, TDD, Git, and DevOps</span></p>
-                </div>
+              <div class="mt-3 text-muted">
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">6+ Years of Docker & Kubernetes Training Delivered</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">15+ Years In Product Development</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Docker &amp; Kubernetes</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Microsoft Azure & AWS Cloud Platform</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Microservices and Design Patterns</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Distributed and Serverless Architecture</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Apache Kafka and IoT</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Multi-threading and Socket Programming</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">.NET Core, C#, and Python</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Web Socket and Windows Services</span></p>
+                <p class="my-2"><span class="fas fa-arrow-right text-secondary">&nbsp;</span><span class="mx-2">Agile, TDD, Git, and DevOps</span></p>
+              </div>
             </div>
             <div class="col-lg-6 mt-1">
                 <h3>Social Media Connect</h3>
@@ -186,7 +189,7 @@
     <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
     <li class="nav-item"><a class="nav-link" href="/courses/">Courses</a></li>
     <li class="nav-item"><a class="nav-link active" href="/about-the-author/">About Us</a></li>
-    <li class="nav-item"><a class="nav-link" href="/#contact">Contact Us</a></li>
+    <li class="nav-item"><a class="nav-link" href="/contact-us/">Contact Us</a></li>
   </ul>
 }
 
