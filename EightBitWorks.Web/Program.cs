@@ -1,4 +1,5 @@
 using EightBitWorks.Web.Configuration;
+using EightBitWorks.Web.Services.HostedService;
 using EightBitWorks.Web.Services.Mail;
 using Microsoft.AspNetCore.ResponseCompression;
 using WebMarkupMin.AspNetCore7;
@@ -12,12 +13,16 @@ builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddSingleton<IHostConfiguration>(x =>
 {
     var cdnSection = builder.Configuration.GetSection("CdnSettings");
+    var apiSettingsSection = builder.Configuration.GetSection("ApiSettings");
+    
     var cdnUrl = cdnSection["CdnUrl"];
     var useCdn = Convert.ToBoolean(cdnSection["UseCdn"]);
+    var apiHostUrl = apiSettingsSection["HostUrl"];
 
     var hostConfiguration = new HostConfiguration
     {
-        CdnHostUrl = useCdn ? (app.Environment.IsDevelopment() ? string.Empty : cdnUrl) : string.Empty
+        CdnHostUrl = useCdn ? (app.Environment.IsDevelopment() ? string.Empty : cdnUrl) : string.Empty,
+        ApiHostUrl = apiHostUrl
     };
 
     return hostConfiguration;
@@ -57,6 +62,8 @@ builder.Services.AddWebOptimizer(pipeline =>
         option.AllowEmptyBundle = true;
     }
 );
+
+builder.Services.AddHostedService<TimedHostedService>();
 
 app = builder.Build();
 

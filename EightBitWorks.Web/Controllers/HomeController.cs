@@ -55,6 +55,7 @@ public class HomeController : BaseController
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult ContactUs(ContactFormModel model)
     {
         if (this.ModelState.IsValid)

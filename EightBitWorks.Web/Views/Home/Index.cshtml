@@ -209,14 +209,15 @@
         <div class="form w-100 pb-2">
           <h4 class="display-3--title mb-5">start your learning</h4>
           <form action="/contactus" class="row" enctype="multipart/form-data" method="post">
+            @Html.AntiForgeryToken()
             <div class="col-lg-6 col-md mb-3">
               <input name="name" type="text" placeholder="First Name" required="required" maxlength="60" id="inputFirstName" class="shadow form-control form-control-lg">
             </div>
             <div class="col-lg-6 col-md mb-3">
-              <input name="company" type="text" placeholder="Company Name"  maxlength="100" id="inputLastName" class="shadow form-control form-control-lg">
+              <input name="company" type="text" placeholder="Company Name" maxlength="100" id="inputLastName" class="shadow form-control form-control-lg">
             </div>
             <div class="col-lg-12 mb-3">
-              <input name="fromEmail" type="email" placeholder="email address" required="required" maxlength="60"  id="inputEmail" class="shadow form-control form-control-lg">
+              <input name="fromEmail" type="email" placeholder="email address" required="required" maxlength="60" id="inputEmail" class="shadow form-control form-control-lg">
             </div>
             <div class="col-lg-12 mb-3">
               <textarea name="message" placeholder="message" id="message" required="required" rows="8" maxlength="3000" class="shadow form-control form-control-lg"></textarea>
