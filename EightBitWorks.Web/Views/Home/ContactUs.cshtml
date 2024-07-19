@@ -10,6 +10,13 @@
         text-decoration: none !important;
     }
 </style>
+<script>
+  function captchaVerified()
+  {
+    let btnSubmit = document.querySelector("#btnSubmit");
+    btnSubmit.removeAttribute("disabled");
+  }
+</script>
 
 <section id="contact" class="courses-intro-section" style="padding-bottom: 4rem">
   <div class="container">
@@ -21,6 +28,12 @@
       <p class="lh-lg">
         Reach out to us now and let's get started on designing a customized training program tailored to your team's needs.
       </p>
+        @if (ViewBag.CaptchaError != null && !string.IsNullOrEmpty(ViewBag.CaptchaError))
+        {
+          <p style="color: #FF0000; font-weight: bold">
+            @ViewBag.CaptchaError.ToString()
+          </p>
+        }
     </div>
 
     <!-- START THE CTA CONTENT  -->
@@ -60,7 +73,9 @@
               <textarea name="message" placeholder="message" id="message" required="required" rows="8" maxlength="3000" class="shadow form-control form-control-lg"></textarea>
             </div>
             <div class="text-center d-grid mt-1">
-              <button type="submit" class="btn btn-primary rounded-pill pt-3 pb-3">
+              <div class="g-recaptcha" data-callback="captchaVerified" data-sitekey="6Lfh9RMqAAAAAAIvRPMwcRFjJuIeWwi2XLB-7iT-"></div>
+              <br/>
+              <button id="btnSubmit" type="submit" class="btn btn-primary rounded-pill pt-3 pb-3" disabled="disabled">
                 submit
                 <i class="fas fa-paper-plane"></i>
               </button>

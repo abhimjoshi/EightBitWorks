@@ -10,6 +10,8 @@ namespace EightBitWorks.Web.Controllers;
 
 public class HomeController : BaseController
 {
+    private const string SecretKey = "6Lfh9RMqAAAAAOprpQ_tJ53xHGN0fL6Q5Qp7n2e2";
+    
     private MailSettings MailSettings { get; }
     private ILogger<HomeController> Logger { get; }
     private IMailService MailService { get; }
@@ -21,7 +23,6 @@ public class HomeController : BaseController
         this.MailService = mailService;
         this.MailSettings = mailSettingsOptions.Value;
     }
-
 
     [ActionName("Home")]
     [OutputCache(Duration = 1800)]
@@ -56,9 +57,12 @@ public class HomeController : BaseController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult ContactUs(ContactFormModel model)
+    public async Task<IActionResult> ContactUs(ContactFormModel model)
     {
-        if (this.ModelState.IsValid)
+        var recaptchaResponse = this.HttpContext.Request.Form["g-recaptcha-response"];
+        var isCaptchaVerified = await this.VerifyAsync(recaptchaResponse);
+        
+        if (this.ModelState.IsValid && isCaptchaVerified)
         {
             MailService.SendMail(new MailData
             {
@@ -71,10 +75,35 @@ public class HomeController : BaseController
             this.TempData["IsEmailSent"] = true;
             return RedirectToRoute("thank-you");
         }
+
+        this.ViewBag.CaptchaError = "Error: There was an issue with the submitted form. Please try again.";
+        return View();
+    }
+
+    public async Task<bool> VerifyAsync(string token)
+    {
+        using var client = new HttpClient();
+        var content = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("secret", SecretKey),
+            new KeyValuePair<string, string>("response", token)
+        });
+
+        var response = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
+        if (response.IsSuccessStatusCode)
+        {
+            var responseString = await response.Content.ReadAsStringAsync();
+            // Deserialize JSON response from Google reCAPTCHA API
+            var result = System.Text.Json.JsonSerializer.Deserialize<RecaptchaResponse>(responseString);
+            // Check if the reCAPTCHA was successful
+            return result.Success;
+        }
         else
         {
-            return View("Index");
+            this.Logger.LogWarning($"reCAPTCHA verification request failed: {response.StatusCode}");
         }
+
+        return false;
     }
 
     public IActionResult ThankYou()
@@ -141,3 +170,5 @@ public class HomeController : BaseController
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
+
+

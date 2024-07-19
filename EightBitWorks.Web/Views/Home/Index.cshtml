@@ -4,6 +4,14 @@
 }
 @inject IHostConfiguration HostConfiguration
 
+<script>
+  function captchaVerified()
+  {
+    let btnSubmit = document.querySelector("#btnSubmit");
+    btnSubmit.removeAttribute("disabled");
+  }
+</script>
+
 <section id="home" class="intro-section">
   <div class="container">
     <div class="row align-items-center text-white">
@@ -223,7 +231,9 @@
               <textarea name="message" placeholder="message" id="message" required="required" rows="8" maxlength="3000" class="shadow form-control form-control-lg"></textarea>
             </div>
             <div class="text-center d-grid mt-1">
-              <button type="submit" class="btn btn-primary rounded-pill pt-3 pb-3">
+              <div class="g-recaptcha" data-callback="captchaVerified" data-sitekey="6Lfh9RMqAAAAAAIvRPMwcRFjJuIeWwi2XLB-7iT-"></div>
+              <br/>
+              <button id="btnSubmit" type="submit" class="btn btn-primary rounded-pill pt-3 pb-3" disabled="disabled">
                 submit
                 <i class="fas fa-paper-plane"></i>
               </button>
