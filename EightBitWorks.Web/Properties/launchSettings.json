@@ -15,9 +15,9 @@
       "applicationUrl": "http://localhost:5204",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "MAILGUN_API_KEY": "d208c80b991587a4b5a1acb91d03cf08-f6d80573-ae7e0bb5",
-        "MAILGUN_DOMAIN": "mg.eightbitworks.com",
-        "MAILGUN_BASE_URL": "https://api.eu.mailgun.net"
+        "MAILGUN_API_KEY": "",
+        "MAILGUN_DOMAIN": "",
+        "MAILGUN_BASE_URL": ""
       }
     },
     "https": {
