@@ -9,7 +9,8 @@ WebApplication app = null;
 
 // add mail service
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
-builder.Services.AddTransient<IMailService, MailService>();
+builder.Services.Configure<MailGunSettings>(builder.Configuration.GetSection("MailGunSettings"));
+builder.Services.AddTransient<IMailService, MailGunEmailService>();
 builder.Services.AddSingleton<IHostConfiguration>(x =>
 {
     var cdnSection = builder.Configuration.GetSection("CdnSettings");
