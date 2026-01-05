@@ -2,6 +2,7 @@ using EightBitWorks.Web.Configuration;
 using EightBitWorks.Web.Services.HostedService;
 using EightBitWorks.Web.Services.Mail;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.VisualBasic;
 using WebMarkupMin.AspNetCore7;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,18 @@ WebApplication app = null;
 
 // add mail service
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
-builder.Services.Configure<MailGunSettings>(builder.Configuration.GetSection("MailGunSettings"));
+builder.Services.Configure<MailGunSettings>( mgs =>
+{
+    var mailGunSection = builder.Configuration.GetSection("MailGunSettings");
+     
+    mgs.ApiKey = Environment.GetEnvironmentVariable("MAILGUN_API_KEY");
+    mgs.Domain = Environment.GetEnvironmentVariable("MAILGUN_DOMAIN");
+    mgs.BaseUrl = Environment.GetEnvironmentVariable("MAILGUN_BASE_URL");
+    mgs.SenderName = mailGunSection.GetValue<string>("SenderName");
+    mgs.SenderEmail = mailGunSection.GetValue<string>("SenderEmail");
+    
+});
+
 builder.Services.AddTransient<IMailService, MailGunEmailService>();
 builder.Services.AddSingleton<IHostConfiguration>(x =>
 {
