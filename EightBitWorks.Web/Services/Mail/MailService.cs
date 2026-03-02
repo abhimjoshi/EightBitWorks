@@ -1,4 +1,5 @@
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
@@ -37,7 +38,7 @@ public class MailService : IMailService
             
             //this is the SmtpClient from the Mailkit.Net.Smtp namespace, not the System.Net.Mail one
             using var mailClient = new SmtpClient();
-            mailClient.Connect(_mailSettings.Server, _mailSettings.Port);
+            mailClient.Connect(_mailSettings.Server, _mailSettings.Port, SecureSocketOptions.StartTls);
             mailClient.Authenticate(_mailSettings.UserName, _mailSettings.Password);
             mailClient.Send(emailMessage);
             mailClient.Disconnect(true);

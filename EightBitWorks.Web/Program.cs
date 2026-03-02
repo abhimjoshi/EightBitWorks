@@ -22,7 +22,7 @@ builder.Services.Configure<MailGunSettings>( mgs =>
     
 });
 
-builder.Services.AddTransient<IMailService, MailGunEmailService>();
+builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddSingleton<IHostConfiguration>(x =>
 {
     var cdnSection = builder.Configuration.GetSection("CdnSettings");
